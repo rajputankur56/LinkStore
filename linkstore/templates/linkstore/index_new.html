@@ -1,0 +1,40 @@
+{% extends 'linkstore/base.html' %}
+
+{% block content %}
+{% load socialaccount %}
+
+<style>
+/* Remove the navbar's default rounded borders and increase the bottom margin */
+.navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+        .col-sm-4 {
+            width: 33.33333333%;
+            text-align: center;
+        }
+        </style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-default">              
+                
+                {% if user.is_authenticated %}
+                <h1>Welcome {{ user.username }} to LinkStore</h1>
+                <a class="navbar-brand" href="/link">Enter into LinkStore</a>
+                <a href="{% url 'account_logout' %}">Logout?</a>
+                {% else %}
+                <h1>Welcome to LinkStore</h1>
+                <h3>Sign in with Google to store your link</h3>
+                <a href="{% provider_login_url 'google' %}">Login with Google</a>
+                {% endif %}
+            </div>
+        </div>
+
+        
+    </div>
+
+</div>
+{% endblock %}
+

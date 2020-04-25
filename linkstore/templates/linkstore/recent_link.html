@@ -1,0 +1,17 @@
+{% extends 'linkstore/base.html' %}
+
+{% block content %}
+<table>
+    <tr>
+    <th>URL</th>
+    <th>Access date</th>
+  </tr>
+{% for link in recent_links %}
+    <tr>
+    <td><a href={{ link.link }}>{{ link.link }}</a></td>
+    <td>{{link.access_date}}</td>
+    </tr>
+
+{% endfor %}
+</table>
+{% endblock %}
