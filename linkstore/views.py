@@ -18,9 +18,9 @@ def recent_link(request):
     if request.method == 'GET':
         query = request.GET.get('q')
         if query is not None:
-            lookups = Q(title__icontains=query) | Q(link__icontains=query) | Q(description__icontains=query) \
-                      | Q(category__icontains=query)
-            links = Link.objects.filter(lookups).distinct()
+            lookups = Q(owner=request.user) & (Q(title__icontains=query) | Q(link__icontains=query)
+                                               | Q(description__icontains=query) | Q(category__icontains=query))
+            links = Link.objects.filter(lookups).distinct()[:5]
             context = {'recent_links': links,
                        'active': 'recent_links'}
 
@@ -72,8 +72,8 @@ def category_link(request, category):
     if request.method == 'GET':
         query = request.GET.get('q')
         if query is not None:
-            lookups = Q(title__icontains=query) | Q(link__icontains=query) | Q(description__icontains=query) \
-                      | Q(category__icontains=query)
+            lookups = Q(owner=request.user) & (Q(title__icontains=query) | Q(link__icontains=query) |
+                                               Q(description__icontains=query) | Q(category__icontains=query))
             links = Link.objects.filter(lookups).distinct()
             context = {'recent_links': links,
                        'active': 'category_links',

@@ -2,38 +2,38 @@
 
 
 {% block content %}
-        <div class="row p-3 mt-5">
+        <div class="row p-3 mt-2">
             <div class="col-lg-6 col-md-12 col-sm-12 ml-auto mr-auto card p-5">
                 <div class="row">
                     <div class="col-12 text-center">
                         <h4>{{header}}</h4>
                     </div>
                 </div>
-                <form method="POST" class="post-form">
+                <form method="POST" class="post-form text-dark">
                     {% for field in form.visible_fields %}
                     <div class="form-group">
                         <label >{{field.label_tag}}</label>
                         {% if field.name == 'category' %}
                             <select class="form-control border" name="category">
-                                <option>
+                                <option {% if field.value == "social" %} selected {% endif %}>
                                     Social
                                 </option>
-                                <option>
+                                <option {% if field.value == "travel" %} selected {% endif %}>
                                     Travel
                                 </option>
-                                <option>
+                                <option {% if field.value == "finance" %} selected {% endif %}>
                                     Finance
                                 </option>
-                                <option>
+                                <option {% if field.value == "education" %} selected {% endif %}>
                                     Education
                                 </option>
-                                <option>
+                                <option {% if field.value == "business" %} selected {% endif %}>
                                     Business
                                 </option>
-                                <option>
+                                <option {% if field.value == "personal" %} selected {% endif %}>
                                     Personal
                                 </option>
-                                <option>
+                                <option {% if field.value == "entertainment" %} selected {% endif %}>
                                     Entertainment
                                 </option>
                             </select>
