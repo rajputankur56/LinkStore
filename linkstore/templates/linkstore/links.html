@@ -1,0 +1,132 @@
+{% extends 'linkstore/layout.html' %}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+{% block content %}
+<style>
+    .active_category{
+        background-color: #3445b4;
+    }
+</style>
+
+
+<div class="card p-3 ml-2 mt-3">
+    <div class="row mt-2 mb-2">
+        <div class="col-12" style="text-align:right">
+            <form action="{% url 'recent_link' %}" method="GET" value="{{request.GET.q}}">
+             <input type="text" class="border" name="q" value="{{request.GET.q}}" placeholder="Search link"/>
+             <input type="submit" name="submit" value="Search"/>
+        </div>
+    </form>
+    </div>
+    <div class="row border-bottom">
+        <div class="col-6">
+            <h5>URL</h5>
+        </div>
+        <div class="col-4">
+            <h5>Access Date</h5>
+        </div>
+        <div class="col-2">
+            <h5>Actions</h5>
+        </div>
+    </div>
+    {% if recent_links %}
+        {% for link in recent_links %}
+           <div class="row p-2">
+               <div class="col-6">
+                    <a href={{ link.link }}>{{ link.link }}</a>
+                </div>
+                <div class="col-4">
+                    {{link.access_date}}
+                </div>
+               <div class="col-2">
+                   <i class="material-icons" onclick="location.href='{% url 'delete_link' link.id %}'" style="cursor:pointer">delete</i>
+                   <span class="ml-3">
+                       <i class="material-icons" onclick="location.href='{% url 'form_edit' link.id %}'" style="cursor:pointer">edit</i>
+                   </span>
+               </div>
+           </div>
+        {% endfor %}
+    {% else %}
+    <p class="text-center pt-3">No links added yet</p>
+    {% endif %}
+</div>
+
+<div class="card mt-2 p-3 ml-2">
+    <h5><strong class="text-dark">Select Category to view links</strong></h5>
+    <div class="row mt-3 ml-2 mr-1">
+        <div class="col-lg-3 col-md-6 col-sm-12 mt-2">
+            <span class="card p-3 text-center {% if active_category == 'social' %}active_category text-white {% else %} text-dark{% endif %}"
+                  style="cursor:pointer;"
+                  onclick="location.href='{% url 'category_link' category='social' %}'">
+                <i class="material-icons" style="font-size:60px;">supervised_user_circle</i>
+                <hr>
+                Social
+            </span>
+        </div>
+         <div class="col-lg-3 col-md-6 col-sm-12 mt-2">
+            <span class="card p-3 text-center {% if active_category == 'travel' %}active_category text-white {% else %} text-dark{% endif %}"
+                  style="cursor:pointer;"
+                  onclick="location.href='{% url 'category_link' category='travel' %}'">
+                <i class="material-icons" style="font-size:60px;">flight_takeoff</i>
+                <hr>
+                Travel
+            </span>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12 mt-2">
+            <span class="card p-3 text-center {% if active_category == 'finance' %}active_category text-white {% else %} text-dark{% endif %}"
+                  style="cursor:pointer;"
+                  onclick="location.href='{% url 'category_link' category='finance' %}'">
+                <i class="material-icons" style="font-size:60px;">account_balance_wallet</i>
+                <hr>
+                Finance
+            </span>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12 mt-2">
+            <span class="card p-3 text-center {% if active_category == 'education' %}active_category text-white {% else %} text-dark{% endif %}"
+                  style="cursor:pointer;"
+                  onclick="location.href='{% url 'category_link' category='education' %}'">
+                <i class="material-icons" style="font-size:60px;">assignment</i>
+                <hr>
+                Education
+            </span>
+        </div>
+         <div class="col-lg-3 col-md-6 col-sm-12 mt-3">
+            <span class="card p-3 text-center {% if active_category == 'business' %}active_category text-white {% else %} text-dark{% endif %}"
+                  style="cursor:pointer;"
+                  onclick="location.href='{% url 'category_link' category='business' %}'">
+                <i class="material-icons" style="font-size:60px;">business</i>
+                <hr>
+                Business
+            </span>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12 mt-3">
+            <span class="card p-3 text-center {% if active_category == 'personal' %}active_category text-white {% else %} text-dark{% endif %}"
+                  style="cursor:pointer;"
+                  onclick="location.href='{% url 'category_link' category='personal' %}'">
+                <i class="material-icons" style="font-size:60px;">link</i>
+                <hr>
+                Personal links
+            </span>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12 mt-3">
+            <span class="card p-3 text-center {% if active_category == 'entertainment' %}active_category text-white {% else %} text-dark{% endif %}"
+                  style="cursor:pointer;"
+                  onclick="location.href='{% url 'category_link' category='entertainment' %}'">
+                <i class="material-icons" style="font-size:60px;">tv</i>
+                <hr>
+                Entertainment
+            </span>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12 mt-3">
+            <span class="card p-3 text-center {% if active_category == 'favorites' %}active_category text-white {% else %} text-dark{% endif %}"
+                  style="cursor:pointer;"
+                  onclick="location.href='{% url 'category_link' category='favorites' %}'">
+                <i class="material-icons" style="font-size:60px;">favorite</i>
+                <hr>
+                Favorites
+            </span>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

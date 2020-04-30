@@ -1,9 +1,58 @@
-{% extends 'linkstore/base.html' %}
+{% extends 'linkstore/layout.html' %}
+
 
 {% block content %}
-    <h2>Add Link</h2>
-    <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Save</button>
-    </form>
+        <div class="row p-3 mt-5">
+            <div class="col-lg-6 col-md-12 col-sm-12 ml-auto mr-auto card p-5">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h4>{{header}}</h4>
+                    </div>
+                </div>
+                <form method="POST" class="post-form">
+                    {% for field in form.visible_fields %}
+                    <div class="form-group">
+                        <label >{{field.label_tag}}</label>
+                        {% if field.name == 'category' %}
+                            <select class="form-control border" name="category">
+                                <option>
+                                    Social
+                                </option>
+                                <option>
+                                    Travel
+                                </option>
+                                <option>
+                                    Finance
+                                </option>
+                                <option>
+                                    Education
+                                </option>
+                                <option>
+                                    Business
+                                </option>
+                                <option>
+                                    Personal
+                                </option>
+                                <option>
+                                    Entertainment
+                                </option>
+                            </select>
+                        {% elif field.name == 'favorite' %}
+                            {{ field }}
+                        {% else %}
+                            <input type="text" class="form-control border" name="{{field.name}}"
+                               value="{% if field.value %} {{field.value}} {% endif %}">
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                    <div class="row mt-5">
+                        <div class="col-12 text-center">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                    {% csrf_token %}
+
+                </form>
+            </div>
+        </div>
 {% endblock %}

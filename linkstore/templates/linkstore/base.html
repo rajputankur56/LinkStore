@@ -1,89 +1,34 @@
 {% load static %}
-{% load socialaccount %}
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <title>Link Store</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <style>
-    /* Remove the navbar's default rounded borders and increase the bottom margin */
-    .navbar {
-      margin-bottom: 50px;
-      border-radius: 0;
-    }
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static "libs/bootstrap/css/bootstrap.min.css" %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 
-    /* Remove the jumbotron's default bottom margin */
-     .jumbotron {
-      margin-bottom: 0;
-    }
 
-    img{
-        border-radius: 50%;
-    }
+    {% block css %}
+    {% endblock %}
 
-    form{
-        margin-left:35%;
-    }
-    h2{
-        margin-left:35%;
-    }
-    table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-    /* Add a gray background color and some padding to the footer */
-
-  </style>
 </head>
-<body style="background-color:#EDECEC;">
 
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/link">LinkStore</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="{% url 'add_link' %}" >Add Link</a></li>
-        <li><a href="{% url 'recent_link' %}">History</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-          {% if user.is_authenticated %}
-          <li><a href="#"> <p>{{ user.username }}</p> </a> </li>
-          <li><a href="{% url 'account_logout' %}"> Logout</a></li>
-          {% else %}
-          <a href="{% provider_login_url 'google' %}">Login</a>
-          {% endif %}
-            
-            <!-- <span class="glyphicon glyphicon-user"></span>              -->
-          </li>
-          
-        </ul>
-    </div>
-  </div>
-</nav>
-{% block content %}
- {% endblock %}
+<body>
 
- </body>
+{% block layout %}
+{% endblock %}
+
+</body>
+
+<script src="{% static "libs/jquery-3.4.1.min.js" %}"></script>
+<script src="{% static "libs/popper.min.js" %}"></script>
+<script src="{% static "libs/bootstrap/js/bootstrap.min.js" %}"></script>
+<script src="{% static "libs/moment.js" %}"></script>
+
+
+
+{% block scripts %}
+{% endblock %}
+
 </html>
+
