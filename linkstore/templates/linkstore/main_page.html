@@ -3,6 +3,77 @@
 {% block content %}
 {% load socialaccount %}
 <div class="row">
-
+    <div class="card mt-2 p-3 ml-2">
+        <h5><strong class="text-dark">Select Category to view links</strong></h5>
+        <div class="row mt-3 ml-2 mr-1">
+            <div class="col-lg-3 col-md-6 col-sm-12 mt-2">
+                <span class="card p-3 text-center text-dark" style="cursor:pointer;"
+                      onclick="location.href='{% url 'category_link' category='social' %}'">
+                    <i class="material-icons" style="font-size:60px;">supervised_user_circle</i>
+                    <hr>
+                    Social
+                </span>
+            </div>
+             <div class="col-lg-3 col-md-6 col-sm-12 mt-2">
+                <span class="card p-3 text-center text-dark" style="cursor:pointer;"
+                      onclick="location.href='{% url 'category_link' category='travel' %}'">
+                    <i class="material-icons" style="font-size:60px;">flight_takeoff</i>
+                    <hr>
+                    Travel
+                </span>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 mt-2">
+                <span class="card p-3 text-center text-dark" style="cursor:pointer;"
+                      onclick="location.href='{% url 'category_link' category='finance' %}'">
+                    <i class="material-icons" style="font-size:60px;">account_balance_wallet</i>
+                    <hr>
+                    Finance
+                </span>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 mt-2">
+                <span class="card p-3 text-center text-dark" style="cursor:pointer;"
+                      onclick="location.href='{% url 'category_link' category='education' %}'">
+                    <i class="material-icons" style="font-size:60px;">assignment</i>
+                    <hr>
+                    Education
+                </span>
+            </div>
+             <div class="col-lg-3 col-md-6 col-sm-12 mt-3">
+                <span class="card p-3 text-center text-dark" style="cursor:pointer;"
+                      onclick="location.href='{% url 'category_link' category='business' %}'">
+                    <i class="material-icons" style="font-size:60px;">business</i>
+                    <hr>
+                    Business
+                </span>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 mt-3">
+                <span class="card p-3 text-center text-dark" style="cursor:pointer;"
+                      onclick="location.href='{% url 'category_link' category='personal' %}'">
+                    <i class="material-icons" style="font-size:60px;">link</i>
+                    <hr>
+                    Personal links
+                </span>
+            </div>
+             <div class="col-lg-3 col-md-6 col-sm-12 mt-3">
+                <span class="card p-3 text-center text-dark" style="cursor:pointer;"
+                      onclick="location.href='{% url 'category_link' category='entertainment' %}'">
+                    <i class="material-icons" style="font-size:60px;">tv</i>
+                    <hr>
+                    Entertainment
+                </span>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 mt-3">
+                <span class="card p-3 text-center {% if active_category == 'favorites' %}active_category text-white {% else %} text-dark{% endif %}"
+                      style="cursor:pointer;"
+                      onclick="location.href='{% url 'category_link' category='favorites' %}'">
+                    <i class="material-icons" style="font-size:60px;">favorite</i>
+                    <hr>
+                    Favorites
+                </span>
+            </div>
+    </div>
+    </div>
+    
+    
 </div>
 {% endblock %}
