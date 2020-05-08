@@ -8,6 +8,12 @@
     }
 </style>
 
+<script type="text/javascript">
+    $(function () {
+          $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
+
 
 <div class="card p-3 ml-2 mt-3">
     <div class="row mt-2 mb-2">
@@ -20,10 +26,13 @@
         </div>
     </div>
     <div class="row border-bottom">
-        <div class="col-6">
+        <div class="col-5">
             <h5>URL</h5>
         </div>
-        <div class="col-4">
+        <div class="col-3">
+            <h5>Title</h5>
+        </div>
+        <div class="col-2">
             <h5>Access Date</h5>
         </div>
         <div class="col-2">
@@ -33,10 +42,13 @@
     {% if recent_links %}
         {% for link in recent_links %}
            <div class="row p-2">
-               <div class="col-6">
-                    <a href={{ link.link }}>{{ link.link }}</a>
+               <div class="col-5">
+                    <a href={{ link.link }} data-toggle="tooltip" data-placement="top" title="{{ link.description }}">{{ link.link }}</a>
                 </div>
-                <div class="col-4">
+               <div class="col-3">
+                   {{ link.title }}
+               </div>
+                <div class="col-2">
                     {{link.access_date}}
                 </div>
                <div class="col-2">

@@ -8,4 +8,5 @@ urlpatterns = [
     path('form_edit/<int:pk>/', views.form_edit, name='form_edit'),
     path('delete_link/<int:pk>/', views.delete_link, name='delete_link'),
     path('view_links/<str:category>/', views.category_link, name='category_link'),
+    path('logout', views.logout, name="logout")
 ]

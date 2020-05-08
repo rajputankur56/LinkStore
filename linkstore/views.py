@@ -7,7 +7,9 @@ from django.contrib.auth import logout
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-# Create your views here.
+from django.contrib.auth import logout as auth_logout
+from django.urls import reverse
+
 
 @login_required
 def link_page(request):
@@ -90,6 +92,10 @@ def category_link(request, category):
                                                     'active': 'category_links'})
 
 
+
+def logout(request):
+    auth_logout(request)
+    return HttpResponseRedirect(reverse('index'))
 
 
 # def Logout(request):
