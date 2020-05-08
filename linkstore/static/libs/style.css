@@ -8341,3 +8341,18 @@ a[data-toggle="collapse"] {
 
 .subscribe-form .form-control {
   background: #3b4ec6; }
+
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-height: 640px) {
+    #sidebar .custom-menu .btn {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: relative;
+    }
+    #sidebar .custom-menu .btn i {
+    margin-right: -180px;
+    font-size: 42px;
+}
+}
