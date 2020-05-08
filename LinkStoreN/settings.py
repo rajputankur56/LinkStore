@@ -25,7 +25,7 @@ SECRET_KEY = '+emkwjq#r%vtr31uuxqt3s1h2_*j5nc^w4eur6wye!)(kt#)u='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['linkstore.pythonanywhere.com', 'localhost']
+ALLOWED_HOSTS = ['linkstore.pythonanywhere.com', 'localhost','127.0.0.1']
 
 
 # Application definition
